@@ -3,25 +3,48 @@ NAME
     password attacks
 
 VERSION
-     $Revision: 1.1.1.1 $
+     $Revision: 1.2 $
 
 SYNOPSIS
     Place the following in your "httpd.conf"
 
         PerlLogHandler Apache::BruteWatch
 
-        PerlSetVar BruteDatabase     DBI::mysql::brutelog
+        PerlSetVar BruteDatabase     DBI:mysql:brutelog
         PerlSetVar BruteDataUser     username
         PerlSetVar BruteDataPassword password
 
         PerlSetVar BruteMaxTries     10
         PerlSetVar BruteMaxTime      30
         PerlSetVar BruteNotify       rbowen@example.com
-        PerlSetVar BruteForgive      86400
+        PerlSetVar BruteForgive      300
 
 DESCRIPTION
     "mod_perl" log handler for warning you when someone is attempting a
     brute-force password attack on your web site.
+
+Variables
+    The following variables can be set in your Apache configuration file:
+
+  BruteDatabase
+    The DBI database name, such as "DBI:mysql:brutelog"
+
+  BruteDataUser
+    The database username
+
+  BruteDataPassword
+    The database password
+
+  BruteMaxTries and BruteMaxTime
+    Allow this many failed attempts in this much time. After that,
+    notification will be sent. Time is in seconds.
+
+  BruteNotify
+    Email address to which notifications will be sent
+
+  BruteForgive
+    Failed login attempts will be cleaned up after they are this old. Units
+    are seconds.
 
 Database
      CREATE TABLE bruteattempt (
@@ -44,5 +67,5 @@ AUTHOR
             http://www.cre8tivegroup.com
  
 DATE
-            $Date: 2002/04/03 03:04:37 $
+            $Date: 2003/08/04 23:31:53 $
 

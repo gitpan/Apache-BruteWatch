@@ -1,4 +1,4 @@
-# $Header: /cvsroot/CM_base_modules/lib/CM/ModuleMaker.pm,v 1.1.1.1 2002/04/03 03:04:37 rbowen Exp $
+# $Header: /cvsroot/Apache-BruteWatch/lib/Apache/BruteWatch.pm,v 1.11 2003/08/04 23:31:08 rbowen Exp $
 package Apache::BruteWatch;
 use strict;
 use vars qw($VERSION);
@@ -6,8 +6,8 @@ use Apache::Constants qw( :common );
 use DBI;
 use Mail::Sendmail qw();
 
-# $VERSION = qw($Revision: 1.1.1.1 $)[1];
-$VERSION = 0.10;
+# $VERSION = qw($Revision: 1.11 $)[1];
+$VERSION = 0.11;
 
 =head1 NAME
 
@@ -15,7 +15,7 @@ Apache::BruteWatch - Watch the Apache logs and notify of bruteforce password att
 
 =head1 VERSION
 
- $Revision: 1.1.1.1 $
+ $Revision: 1.11 $
 
 =head1 SYNOPSIS
 
@@ -23,19 +23,49 @@ Place the following in your C<httpd.conf>
 
     PerlLogHandler Apache::BruteWatch
 
-    PerlSetVar BruteDatabase     DBI::mysql::brutelog
+    PerlSetVar BruteDatabase     DBI:mysql:brutelog
     PerlSetVar BruteDataUser     username
     PerlSetVar BruteDataPassword password
 
     PerlSetVar BruteMaxTries     10
     PerlSetVar BruteMaxTime      30
     PerlSetVar BruteNotify       rbowen@example.com
-    PerlSetVar BruteForgive      86400
+    PerlSetVar BruteForgive      300
 
 =head1 DESCRIPTION
 
 C<mod_perl> log handler for warning you when someone is attempting a
 brute-force password attack on your web site.
+
+=head1 Variables
+
+The following variables can be set in your Apache configuration file:
+
+=head2 BruteDatabase
+
+The DBI database name, such as C<DBI:mysql:brutelog>
+
+=head2 BruteDataUser
+
+The database username
+
+=head2 BruteDataPassword
+
+The database password
+
+=head2 BruteMaxTries and BruteMaxTime
+
+Allow this many failed attempts in this much time. After that,
+notification will be sent. Time is in seconds.
+
+=head2 BruteNotify
+
+Email address to which notifications will be sent
+
+=head2 BruteForgive
+
+Failed login attempts will be cleaned up after they are this old. Units
+are seconds.
 
 =cut
 
@@ -82,6 +112,12 @@ sub attacks {
     $sth->execute($username);
     $sth->bind_columns( \$count );
     $sth->fetch;
+    $sth->finish;
+
+    my $forgive = $r->dir_config('BruteForgive');
+    $sth = $dbh->prepare("delete from bruteattempt where 
+                          ts > $time - $forgive");
+    $sth->execute;
     $sth->finish;
 
     return $count;
@@ -154,7 +190,7 @@ warn "Attempting to notify";
  
 =head1 DATE
 
-	$Date: 2002/04/03 03:04:37 $
+	$Date: 2003/08/04 23:31:08 $
 
 =cut
 

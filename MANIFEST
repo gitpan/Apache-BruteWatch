@@ -1,5 +1,4 @@
 LICENSE
-Changes
 Makefile.PL
 README
 lib/Apache/BruteWatch.pm
