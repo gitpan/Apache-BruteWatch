@@ -1,0 +1,52 @@
+NAME
+    CM::License
+
+DESCRIPTION
+    The Creative Group Software License
+
+CONTENT
+    Copyright (c) 2001, The Creative Group (http://www.cre8tivegroup.com/)
+    All rights reserved.
+
+    This product, source code and accompanying files (the "Software"), is
+    licensed, not sold, to the customer by The Creative Group. This license
+    is subject to the following terms and conditions:
+
+    Redistribution of the Software, in any form, with or without
+    modification, is not permitted, without the express permission of The
+    Creative Group.
+
+    The following rights are expressly granted to the licensee:
+
+         *    The right to view the Software, including source code
+         *    The right to modify the Software for use by the licensee
+
+    Neither The Creative Group nor its distributors are responsible in any
+    way for modifications made by the licensee.
+
+    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS ``AS
+    IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED
+    TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
+    PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+    HOLDERS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+    SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED
+    TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+    PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+    LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+    NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+    SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+    EXPORT LAWS: THIS LICENSE ADDS NO RESTRICTIONS TO THE EXPORT LAWS OF
+    YOUR JURISDICTION. It is licensee's responsibility to comply with any
+    export regulations applicable in licensee's jurisdiction. Under CURRENT
+    (March 2001) U.S. export regulations this software is eligible for
+    export from the U.S. and can be downloaded by or otherwise exported or
+    reexported worldwide EXCEPT to U.S. embargoed destinations which include
+    Cuba, Iraq, Libya, North Korea, Iran, Syria, Sudan, Afghanistan and any
+    other country to which the U.S. has embargoed goods and services.
+
+    "Source code" is understood to mean both program source code as well as
+    HTML files, image files, and any other file included in this
+    distribution, with the exception of this file. This file may not be
+    modified.
+
